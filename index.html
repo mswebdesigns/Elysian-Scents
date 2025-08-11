@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysian Scents | Luxury Perfumes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000;
+            --dark-bg: #0a0a0a;
+            --gold: #D4AF37;
+            --light-gold: #FFD700;
+            --dark-gold: #B8860B;
+            --gray: #1A1A1A;
+            --white: #FFFFFF;
+            --transition: all 0.4s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            text-decoration: none;
+
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--black);
+            padding: 14px 38px;
+            border: none;
+            border-radius: 0;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--dark-gold), var(--gold));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .btn:hover:before {
+            opacity: 1;
+        }
+        
+        .btn:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            transform: translateY(-3px);
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        nav.scrolled {
+            padding: 18px 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 25px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 22px;
+            color: var(--white);
+            transition: var(--transition);
+            margin-left: 30px;
+        }
+        
+        .cart-icon:hover {
+            color: var(--gold);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 12px;
+            font-weight: 600;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--white);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+
+        }
+        
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+        
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .hero-image img {
+           
+max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+
+        }
+        
+        .spotlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--dark-bg);
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .about p {
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.8;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            background: var(--black);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .product-card {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        
+        .product-image {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-image img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+
+        }
+        
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+        }
+        
+        .product-card:hover .product-name {
+            color: var(--gold);
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .add-to-cart {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--dark-bg);
+            position: relative;
+        }
+        
+        .testimonial-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 40px;
+            padding: 20px 0;
+            scrollbar-width: none;
+        }
+        
+        .testimonial-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .testimonial-card {
+            min-width: 380px;
+            background: rgba(26, 26, 26, 0.8);
+            padding: 40px;
+            border: 1px solid var(--gold);
+            scroll-snap-align: start;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: rgba(212, 175, 55, 0.2);
+            line-height: 1;
+        }
+        
+        .customer {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .customer-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            border: 2px solid var(--gold);
+        }
+        
+        .customer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .customer-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .customer-info p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .rating {
+            color: var(--gold);
+            margin: 15px 0;
+            font-size: 18px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--black);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+
+  .contact-info h3{
+           font-size:50px;
+padding:20px;
+
+        }
+
+  .contact-info p{
+           font-size:25px;
+padding:10px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Intro paragraph */
+.contact-info > p:first-of-type{
+  margin: 0 0 16px 0;
+  color: white;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Each contact line */
+.contact-info p{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  color: white;
+  font-size: 0.975rem;
+}
+
+/* Icon styling */
+.contact-info i.fas,
+.contact-info i.fa,
+.contact-info i.fab{
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(201,161,74,0.10); /* soft gold background */
+  color: var(--gold);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Links (phone and email) */
+.contact-info a{
+  color: inherit;
+  text-decoration: none;
+  transition: color .15s ease, transform .12s ease;
+}
+.contact-info a:hover{
+  color: #000;
+  transform: translateX(3px);
+}
+
+/* Emphasize address / important bits */
+.contact-info p strong,
+.contact-info p .highlight{
+  color: #111;
+  font-weight: 600;
+}
+
+/* Make it responsive for small screens */
+@media (max-width: 420px){
+  :root { --max-width: 100%; }
+  .contact-info{
+    padding: 18px;
+    border-radius: 12px;
+  }
+  .contact-info i.fas{ width: 30px; height: 30px; font-size: 13px; border-radius: 6px; }
+  .contact-info h3{ font-size: 1.1rem; }
+}
+
+/* Optional utility — subtle entrance */
+.contact-info {
+  transform: translateY(0);
+  transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .18s;
+}
+.contact-info:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.10);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        .contact-form {
+            flex: 1;
+            background: rgba(26, 26, 26, 0.8);
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--black);
+            padding: 100px 0 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+            max-width: 320px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 18px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 50%;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+        
+        .social-icons a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        .footer-heading {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+        
+        .footer-links li {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+        
+        .newsletter p {
+            margin-bottom: 25px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--light-gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.5px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero p {
+                margin: 0 auto 40px;
+            }
+            
+            .hero-image {
+                margin-top: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+            
+            .stats {
+                flex-wrap: wrap;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 85px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--black);
+                width: 100%;
+                height: calc(100vh - 85px);
+                padding: 50px 20px;
+                transition: var(--transition);
+                align-items: center;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .product-grid, .testimonial-card {
+                min-width: 280px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+
+            }
+            
+            .stats {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Elysian Scents</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Heritage</a></li>
+            <li><a href="#products">Collection</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+        </div>
+        <div class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="spotlight"></div>
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Sculpting Dreams in a Bottle</h1>
+                    <p>Discover the secrets of our timeless designs, where the exquisite marriage of form and fragrance transforms each bottle into a work of art.</p>
+                    <a href="#products" class="btn">View All Products</a>
+                </div>
+                <div class="hero-image">
+                    <img src="images/2.png" alt="Elysian Elegance Perfume">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Elysian Scents' Art of Perfumery</h2>
+                <p>Welcome to the epitome of luxury – the Elysian Scents Signature Collection. Tradition and innovation unite in our craftsmanship to create fragrances that transcend time.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value">100+</div>
+                        <div class="stat-label">Unique Scents</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">80K+</div>
+                        <div class="stat-label">Global Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">10Y+</div>
+                        <div class="stat-label">Craftsmanship</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Signature Collection</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/1.png" alt="Nuit Étoilée">
+                    </div>
+                    <h3 class="product-name">Elysian Noir</h3>
+                    <p class="product-price">$240.00</p>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                    </button>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/Golden Aura.png" alt="Ambre Royal">
+                    </div>
+                    <h3 class="product-name">Golden Aura</h3>
+                    <p class="product-price">$220.00</p>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                    </button>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/Velour Essence.png" alt="Rose Velours">
+                    </div>
+                    <h3 class="product-name">Velour Essence</h3>
+                    <p class="product-price">$195.00</p>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                    </button>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/crystal.png" alt="Bois d'Ébène">
+                    </div>
+                    <h3 class="product-name">Crystal Dawn</h3>
+                    <p class="product-price">$260.00</p>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                    </button>
+                </div>
+           <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/Amber Luxe.png" alt="Bois d'Ébène">
+                    </div>
+                    <h3 class="product-name">Amber Luxe</h3>
+                    <p class="product-price">$260.00</p>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                    </button>
+                </div>
+
+           <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/5.png" alt="Bois d'Ébène">
+                    </div>
+                    <h3 class="product-name">Crystal Dawn</h3>
+                    <p class="product-price">$260.00</p>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="testimonial-container">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Nuit Étoilée is unlike any fragrance I've ever experienced. It's complex, sophisticated, and evolves beautifully throughout the day. I receive compliments every time I wear it."</p>
+                    <div class="customer">
+                        <div class="customer-image">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Sophie Laurent">
+                        </div>
+                        <div class="customer-info">
+                            <h4>Sophie Laurent</h4>
+                            <p>Paris, France</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The craftsmanship behind Elysian Scents is extraordinary. Ambre Royal has become my signature scent - warm, mysterious, and utterly captivating. Worth every penny."</p>
+                    <div class="customer">
+                        <div class="customer-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="James Wilson">
+                        </div>
+                        <div class="customer-info">
+                            <h4>James Wilson</h4>
+                            <p>London, UK</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"I've been collecting perfumes for 20 years, and Elysian's Rose Velours stands apart. It captures the essence of a Provence rose garden at dawn - authentic, luxurious, and breathtaking."</p>
+                    <div class="customer">
+                        <div class="customer-image">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Elena Rossi">
+                        </div>
+                        <div class="customer-info">
+                            <h4>Elena Rossi</h4>
+                            <p>Milan, Italy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+
+                    <p>Have questions about our fragrances or need assistance with an order? Our customer care team is here to help.</p>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 10px;"></i> 123 Luxury Avenue, Paris, France</p>
+                    <p><i class="fas fa-phone" style="color: var(--gold); margin-right: 10px;"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-envelope" style="color: var(--gold); margin-right: 10px;"></i> contact@elysianscents.com</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Elysian Scents</div>
+                    <p>Crafting extraordinary fragrances since 1892. Each bottle is a testament to French perfumery excellence and timeless elegance.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-heading">Explore</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Our Heritage</a></li>
+                        <li><a href="#products">Collections</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="newsletter">
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p>Subscribe to receive exclusive updates, new fragrance launches, and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Elysian Scents. All Rights Reserved. Developed By MS Web Designs</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Add to cart functionality
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartCount = document.querySelector('.cart-count');
+        let count = 0;
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                count++;
+                cartCount.textContent = count;
+                
+                const card = this.closest('.product-card');
+                const productName = card.querySelector('.product-name').textContent;
+                
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.textContent = `${productName} added to cart`;
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '20px';
+                notification.style.backgroundColor = '#D4AF37';
+                notification.style.color = '#000';
+                notification.style.padding = '15px 25px';
+                notification.style.borderRadius = '4px';
+                notification.style.zIndex = '1000';
+                notification.style.fontWeight = '500';
+                notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+                notification.style.transform = 'translateY(100px)';
+                notification.style.opacity = '0';
+                notification.style.transition = 'all 0.4s ease';
+                
+                document.body.appendChild(notification);
+                
+                // Animate in
+                setTimeout(() => {
+                    notification.style.transform = 'translateY(0)';
+                    notification.style.opacity = '1';
+                }, 10);
+                
+                // Animate out after 3 seconds
+                setTimeout(() => {
+                    notification.style.transform = 'translateY(100px)';
+                    notification.style.opacity = '0';
+                    
+                    // Remove element after animation
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 400);
+                }, 3000);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
